@@ -8,6 +8,7 @@ public class BallController : MonoBehaviour
     private Vector3 dragEndPos; // Will store mouse position at the end of the drag
     private bool isDragging = false; // Flag for dragging
     private bool isClickedOnBall = false; // Flag for if the click starts on ball
+    private bool isMoving = false; // Flag for if the ball is moving
     public float power = 10f; // Multiplier for power
 
     void Start() // Called once at the start of the game (required for all MonoBehavior scripts)
@@ -17,7 +18,7 @@ public class BallController : MonoBehaviour
 
     void Update() // Called during every frame 
     {
-        if (Input.GetMouseButtonDown(0)) // Check if the mouse was clicked down
+        if (Input.GetMouseButtonDown(0) && !isMoving) // Check if the mouse was clicked down
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition); // Create ray from camera to mouse position
             if (Physics.Raycast(ray, out RaycastHit hit)) // Set variable hit to be position of where the ray hits something
@@ -42,7 +43,7 @@ public class BallController : MonoBehaviour
             
         }
 
-        if (Input.GetMouseButtonUp(0) && isDragging && isClickedOnBall) // Check if the mouse was released while being dragged
+        if (Input.GetMouseButtonUp(0) && isDragging && isClickedOnBall && !isMoving) // Check if the mouse was released while being dragged
         {
             // Set dragging to false, get mouse position, create a force and apply it to the ball
             // The force accounts for direction already
@@ -52,6 +53,20 @@ public class BallController : MonoBehaviour
 
             isDragging = false;
             isClickedOnBall = false;
+        }
+    }
+
+    void FixedUpdate()
+    {
+        if (rb.linearVelocity.magnitude > 0.01f)
+        {
+            isMoving = true;
+        }
+        else
+        {
+            isMoving = false;
+            rb.linearVelocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
         }
     }
 
