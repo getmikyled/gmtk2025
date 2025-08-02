@@ -19,7 +19,7 @@ namespace DefaultNamespace
             replayManager.onEndReplay.AddListener(HandleEndReplay);
             
             // ball1.OnBallMove += HandleOnBallMove;
-            ball1.OnBallMove += HandleOnBallMoveBegin;
+            ball1.OnBallMove.AddListener(HandleOnBallMoveBegin);
         }
 
         private int courseIndex = 0;
