@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 // Every Unity script that interacts with the engine must inherit from MonoBehaviour
 public class BallController : MonoBehaviour
@@ -10,6 +12,8 @@ public class BallController : MonoBehaviour
     private bool isClickedOnBall = false; // Flag for if the click starts on ball
     public float power = 10f; // Multiplier for power
 
+    public event Action<BallController> OnBallMove; // Event for when the ball moves
+    
     void Start() // Called once at the start of the game (required for all MonoBehavior scripts)
     {
         rb = GetComponent<Rigidbody>(); // Attaches the Rigidbody variable to the sphere
@@ -48,7 +52,12 @@ public class BallController : MonoBehaviour
             // The force accounts for direction already
             dragEndPos = GetMouseWorldPosition();
             Vector3 force = (dragStartPos - dragEndPos) * power;
+            
             rb.AddForce(force, ForceMode.Impulse);
+            
+            // Invoke ball move event so listeners have access to the data
+            OnBallMove?.Invoke(this);
+            Debug.Log($"[BallController ({Time.frameCount})] Moving ball");
 
             isDragging = false;
             isClickedOnBall = false;
