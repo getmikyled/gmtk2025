@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Serialization;
@@ -17,21 +18,27 @@ public class MinigolfGameData
 
 public class MinigolfGameManager : MonoBehaviour
 {
+    public GameObject course1Prefab;  // Reference to the prefab of mingolf course
+    public GameObject course2Prefab;
+
+    private GameObject course;  // Instantiated gameobject for minigolf course
+    
     public static MinigolfGameManager Instance;
     public MinigolfGameData gameData;
-
+    
     [SerializeField] private BallController player1Ball;
     [SerializeField] private BallController player2Ball;
+    [SerializeField] private HoleTrigger hole;
     
     // Events
     public UnityEvent<MinigolfGameData> OnCourseBegin;
-    public UnityEvent<MinigolfGameData> OnGameCBegin;
+    public UnityEvent<MinigolfGameData> OnHoleBegin;
     public UnityEvent<MinigolfGameData> OnCourseComplete;
     public UnityEvent<MinigolfGameData> OnHoleComplete;
     public UnityEvent<MinigolfGameData> OnChangeTurn;
     
     
-    public void Awake()
+    private void Awake()
     {
         if (Instance != null)
         {
@@ -39,7 +46,7 @@ public class MinigolfGameManager : MonoBehaviour
         }
     }
     
-    public void Start()
+    private void Start()
     {
         // Initialize starting properties
         gameData = new MinigolfGameData();
@@ -52,24 +59,47 @@ public class MinigolfGameManager : MonoBehaviour
         gameData.player2Score = 0;
     }
 
-    public void StartCourse()
+    private void OnEnable()
+    {
+        // Subscribe to events
+        
+    }
+
+    private void OnDisable()
+    {
+        // Unsubscribe from events
+    }
+
+    public async Task StartCourse()
     {
         Debug.Log($"Starting course: {gameData.course}");
 
         gameData.hole = 0; // Set to 1st hole
+        gameData.currentPlayer = PlayerEnum.Phoenix;
         
         switch (gameData.course)
         {
             case 0:
+                course = Instantiate(course1Prefab);
                 break;
             case 1:
+                Destroy(course);
+                course = Instantiate(course2Prefab);
                 break;
             case 2:
+                Destroy(course);
+                course = Instantiate(course2Prefab);
                 break;
         }
+        
+        OnCourseBegin.Invoke(gameData);
+
+        await Task.Yield(); // Wait 1 frame for the course to be instantiated
+        
+        StartHole();
     }
 
-    public void StartHole()
+    public async Task StartHole()
     {
         switch (gameData.course)
         {
@@ -78,16 +108,46 @@ public class MinigolfGameManager : MonoBehaviour
             case 1:
                 break;
         }
+        
+        OnHoleBegin.Invoke(gameData);
     }
 
-    private void LoadCourse(int course)
+    public async Task EndCourse()
     {
+        Destroy(course);
+        OnCourseComplete.Invoke(gameData);
         
+        await Task.Yield(); // Wait 1 frame to resolve OnCourseComplete events
+        
+        // Move to next
+        gameData.course++;
     }
 
-    private void LoadHole(int hole)
+    public async Task EndHole()
     {
+        OnHoleComplete.Invoke(gameData);
+
+        await Task.Yield(); // Wait 1 frame to resolve OnHoleComplete events
         
+        if (gameData.hole >= 2) // At last hole
+        {
+            EndCourse();
+            return;
+        }
+
+        if (gameData.currentPlayer == PlayerEnum.Phoenix)
+        {
+            // When 1st player finishes, repeat hole with 2nd player
+            gameData.currentPlayer = PlayerEnum.River;
+        }
+        else
+        {
+            // Otherwise, advance to next hole and begin player 1
+            gameData.currentPlayer = PlayerEnum.Phoenix;
+            gameData.hole++;
+        }
+        
+        OnChangeTurn.Invoke(gameData);
     }
     
     
@@ -98,10 +158,10 @@ public class MinigolfGameManager : MonoBehaviour
         gameData.losingPlayer = (gameData.player1Score < gameData.player2Score) ? PlayerEnum.Phoenix : PlayerEnum.River;
     }
 
+    #region Minigolf Game Events
     public void OnBallEnteredHole(/* BallController ballRef,  */)
     {
-        OnHoleComplete.Invoke(gameData);
-        
+        EndHole();
     }
 
     public void OnBallHit()
@@ -116,5 +176,5 @@ public class MinigolfGameManager : MonoBehaviour
         } 
     }
     
-    
+    #endregion
 }

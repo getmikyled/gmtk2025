@@ -17,24 +17,6 @@ public class GameManager : MonoBehaviour
         { "river-course-1-hole-0-complete", "River takes the lead!" },
     };
     
-    public Vector2[] course1Scores = new[]
-    {
-        new Vector2(0, 0), // Hole 1 : x = Player 1's score, y = Player 2's score
-        new Vector2(0, 0) // Hole 2
-    };
-
-    public Vector2[] course2Scores = new[]
-    {
-        new Vector2(0, 0),
-        new Vector2(0, 0)
-    };
-    
-    public Vector2[] course3Scores = new[]
-    {
-        new Vector2(0, 0),
-        new Vector2(0, 0)
-    };
-    
     private void Awake()
     {
         if (Instance != null)
@@ -51,17 +33,25 @@ public class GameManager : MonoBehaviour
     private void OnEnable()
     {
         // Subscribe to events
+        MinigolfGameManager.Instance.OnCourseBegin.AddListener(OnCourseBegin);
+        MinigolfGameManager.Instance.OnHoleBegin.AddListener(OnHoleBegin);
         MinigolfGameManager.Instance.OnCourseComplete.AddListener(OnCourseComplete);
+        MinigolfGameManager.Instance.OnHoleComplete.AddListener(OnHoleComplete);
     }
     
     private void OnDisable()
     {
         // Unsubscribe from events
+        MinigolfGameManager.Instance.OnCourseBegin.RemoveListener(OnCourseBegin);
+        MinigolfGameManager.Instance.OnHoleBegin.RemoveListener(OnHoleBegin);
+        MinigolfGameManager.Instance.OnCourseComplete.RemoveListener(OnCourseComplete);
+        MinigolfGameManager.Instance.OnHoleComplete.RemoveListener(OnHoleComplete);
     }
     
-    #region Event Handlers
+    #region Minigolf Game Events
     private void OnCourseBegin(MinigolfGameData gameData)
     {
+        // Example of how to trigger parts of the story
         if (gameData.course == 0 && gameData.hole == 0)
         {
             Debug.Log($"phoenix: {DialogueMap["phoenix-course-1-hole-0-start"]}");
@@ -76,6 +66,9 @@ public class GameManager : MonoBehaviour
     
     private void OnCourseComplete(MinigolfGameData gameData)
     {
+        UpdateScore(gameData);
+        
+        // Example of how to trigger parts of the story
         if (gameData.course == 0 && gameData.hole == 0)
         {
             // DisplayManager.Set(Player.Phoenix, "Let the game begin"!
@@ -85,6 +78,33 @@ public class GameManager : MonoBehaviour
     private void OnHoleComplete(MinigolfGameData gameData)
     {
         
+    }
+    
+    #endregion
+    
+    
+    #region Highscore Events
+    // Index 0 is hole 1, etc. X = Player 1's score, y = Player 2's score
+    public Vector2[] course1Scores = new Vector2[2];
+
+    public Vector2[] course2Scores = new Vector2[2];
+
+    public Vector2[] course3Scores = new Vector2[2];
+
+    private void UpdateScore(MinigolfGameData gameData)
+    {
+        switch (gameData.course)
+        {
+            case 0:
+                course1Scores[0] = new Vector2(gameData.player1Score, gameData.player2Score);
+                break;
+            case 1:
+                course2Scores[0] = new Vector2(gameData.player1Score, gameData.player2Score);
+                break;
+            case 2:
+                course3Scores[0] = new Vector2(gameData.player1Score, gameData.player2Score);
+                break;
+        }
     }
     
     #endregion
