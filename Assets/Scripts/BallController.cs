@@ -58,7 +58,7 @@ public class BallController : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (rb.linearVelocity.magnitude > 0.01f)
+        if (rb.linearVelocity.magnitude > 0.1f)
         {
             isMoving = true;
         }
