@@ -1,8 +1,15 @@
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MinigolfMainMenuUI : MonoBehaviour
 {
     private static MinigolfMainMenuUI Instance;
+
+    [SerializeField] private Button onePlayerButton;
+    [SerializeField] private Button twoPlayersButton;
     
     public bool onePlayerEnabled = false;
     public bool twoPlayerEnabled = false;
@@ -16,7 +23,33 @@ public class MinigolfMainMenuUI : MonoBehaviour
         else
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject); // Optional: Persist across scene loads
+        }
+        
+        onePlayerButton.onClick.AddListener(OnOnePlayerButtonClicked);
+        twoPlayersButton.onClick.AddListener(OnTwoPlayersButtonClicked);
+    }
+
+    public void OnOnePlayerButtonClicked()
+    {
+        if (onePlayerEnabled)
+        {
+            
+        }
+        else
+        {
+            DialogueManager.Instance.ShowDialogue("course_0_hole_0_2");
+        }
+    }
+
+    public void OnTwoPlayersButtonClicked()
+    {
+        if (twoPlayerEnabled)
+        {
+            SceneManager.LoadScene("Game");
+        }
+        else
+        {
+            DialogueManager.Instance.ShowDialogue("course_3_hole_0_1");
         }
     }
 }

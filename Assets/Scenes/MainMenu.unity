@@ -380,60 +380,68 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 482162524}
   m_CullTransparentMesh: 1
---- !u!1 &632671035
-GameObject:
+--- !u!1001 &545400790
+PrefabInstance:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 632671037}
-  - component: {fileID: 632671036}
-  m_Layer: 0
-  m_Name: GameManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &632671036
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 632671035}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa40c8bcbc9d457ea606dd172ace4e5e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  course1Scores:
-  - {x: 0, y: 0}
-  - {x: 0, y: 0}
-  course2Scores:
-  - {x: 0, y: 0}
-  - {x: 0, y: 0}
-  course3Scores:
-  - {x: 0, y: 0}
-  - {x: 0, y: 0}
---- !u!4 &632671037
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 632671035}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 48.49091, y: 35.698746, z: -877.53955}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1294245557}
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4214954513351996688, guid: e4ce38c7bd307cc46bfd63f2ec017469, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 41.384144
+      objectReference: {fileID: 0}
+    - target: {fileID: 4214954513351996688, guid: e4ce38c7bd307cc46bfd63f2ec017469, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -46.167427
+      objectReference: {fileID: 0}
+    - target: {fileID: 4214954513351996688, guid: e4ce38c7bd307cc46bfd63f2ec017469, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 46.889595
+      objectReference: {fileID: 0}
+    - target: {fileID: 4214954513351996688, guid: e4ce38c7bd307cc46bfd63f2ec017469, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4214954513351996688, guid: e4ce38c7bd307cc46bfd63f2ec017469, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4214954513351996688, guid: e4ce38c7bd307cc46bfd63f2ec017469, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4214954513351996688, guid: e4ce38c7bd307cc46bfd63f2ec017469, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4214954513351996688, guid: e4ce38c7bd307cc46bfd63f2ec017469, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4214954513351996688, guid: e4ce38c7bd307cc46bfd63f2ec017469, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4214954513351996688, guid: e4ce38c7bd307cc46bfd63f2ec017469, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6889807598771133616, guid: e4ce38c7bd307cc46bfd63f2ec017469, type: 3}
+      propertyPath: m_Name
+      value: DialogueManager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e4ce38c7bd307cc46bfd63f2ec017469, type: 3}
+--- !u!223 &637321754 stripped
+Canvas:
+  m_CorrespondingSourceObject: {fileID: 2062969655888716596, guid: bec0a45afde704449b11c3b7fbcf0f7b, type: 3}
+  m_PrefabInstance: {fileID: 5281557770403111936}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -723,78 +731,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!1 &1294245556
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1294245557}
-  - component: {fileID: 1294245558}
-  m_Layer: 0
-  m_Name: MinigolfGameManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1294245557
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1294245556}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 632671037}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1294245558
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1294245556}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 435f8fb7d9d14a5ca5bc8f9658f39d1c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  course1Prefab: {fileID: 0}
-  course2Prefab: {fileID: 0}
-  gameData:
-    currentPlayer: 0
-    course: 0
-    hole: 0
-    winningPlayer: 0
-    losingPlayer: 0
-    player1Score: 0
-    player2Score: 0
-  player1Ball: {fileID: 0}
-  player2Ball: {fileID: 0}
-  hole: {fileID: 0}
-  OnCourseBegin:
-    m_PersistentCalls:
-      m_Calls: []
-  OnHoleBegin:
-    m_PersistentCalls:
-      m_Calls: []
-  OnCourseComplete:
-    m_PersistentCalls:
-      m_Calls: []
-  OnHoleComplete:
-    m_PersistentCalls:
-      m_Calls: []
-  OnChangeTurn:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &1302208508
 GameObject:
   m_ObjectHideFlags: 0
@@ -1510,13 +1446,45 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5113944858712843495, guid: bec0a45afde704449b11c3b7fbcf0f7b, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 637321754}
     - target: {fileID: 6568098213630299865, guid: bec0a45afde704449b11c3b7fbcf0f7b, type: 3}
       propertyPath: golfMainMenuUI
       value: 
       objectReference: {fileID: 209394360}
+    - target: {fileID: 7595871370271787424, guid: bec0a45afde704449b11c3b7fbcf0f7b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7595871370271787424, guid: bec0a45afde704449b11c3b7fbcf0f7b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7595871370271787424, guid: bec0a45afde704449b11c3b7fbcf0f7b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7747209282184569959, guid: bec0a45afde704449b11c3b7fbcf0f7b, type: 3}
       propertyPath: m_Name
       value: GameplayUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 8879634513938440441, guid: bec0a45afde704449b11c3b7fbcf0f7b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8917490618857316925, guid: bec0a45afde704449b11c3b7fbcf0f7b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8917490618857316925, guid: bec0a45afde704449b11c3b7fbcf0f7b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8917490618857316925, guid: bec0a45afde704449b11c3b7fbcf0f7b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1533,4 +1501,4 @@ SceneRoots:
   - {fileID: 1284866493}
   - {fileID: 1302208511}
   - {fileID: 5281557770403111936}
-  - {fileID: 632671037}
+  - {fileID: 545400790}
