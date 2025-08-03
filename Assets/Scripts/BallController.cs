@@ -13,7 +13,7 @@ public class BallController : MonoBehaviour
     private bool isMoving = false; // Flag for if the ball is moving
     public float power = 10f; // Multiplier for power
 
-    public event Action<BallController> OnBallMove; // Event for when the ball moves
+    public UnityEvent<BallController> OnBallMove; // Event for when the ball moves
     
     void Start() // Called once at the start of the game (required for all MonoBehavior scripts)
     {
