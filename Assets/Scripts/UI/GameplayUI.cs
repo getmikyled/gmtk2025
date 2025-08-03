@@ -13,9 +13,13 @@ public class GameplayUI : MonoBehaviour
     [SerializeField] private float lerpFadeDuration = 1.0f;
 
     [Space] 
+    [FormerlySerializedAs("highscoreSaved")] public bool highscoreNameSaved = false;
     [SerializeField] private TextMeshProUGUI highscoreNameInput;
 
-    [FormerlySerializedAs("highscoreSaved")] public bool highscoreNameSaved = false;
+
+    [Space] 
+    [SerializeField] private GameObject golfMainMenuUI;
+    
     
     private void Awake()
     {
@@ -28,11 +32,18 @@ public class GameplayUI : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(gameObject); // Optional: Persist across scene loads
         }
+
+        SetGolfMainMenuUIActive(false);
     }
 
     public void Initialize()
     {
         highscoreNameSaved = false;
+    }
+
+    public void SetGolfMainMenuUIActive(bool argActive)
+    {
+        golfMainMenuUI.SetActive(argActive);
     }
     
     /// <summary>

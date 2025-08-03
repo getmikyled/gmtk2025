@@ -1,0 +1,28 @@
+#,Id,Course,Hole,Dialogue String,Character,Trigger,Sequence,Choice,Notes
+0,course_0_hole_0_0,0,0,"Hey, move over!",River,Game Start,Yes - start,,
+1,course_0_hole_0_1,0,0,It's your butt in the way!,Phoenix,,Yes - end,,
+2,course_0_hole_0_2,0,0,Hey! Aren't we playing together?,Phoenix,Singleplayer select,No,,"Unable to select until Course ""3"""
+3,course_0_hole_0_3,0,0,"Oo, it's starting!",Phoenix,Course Start,No,,
+4,course_1_hole_1_4,1,1,Ha - loser!,Phoenix,Phoenix starts the game,Yes - start,,
+5,course_1_hole_1_5,1,1,Shut up...,River,,Yes - end,,
+6,course_1_hole_1_6,1,1,Like you did any better!,River,River's ball fires,Yes - start,,
+7,course_1_hole_1_7,1,1,"It takes ""patience"" to be the greatest!",Phoenix,,Yes,,Core story lines
+8,course_1_hole_1_8,1,1,My mom said you wouldn't know her,Phoenix,,Yes,,Core story lines
+9,course_1_hole_1_9,1,1,"Well, I don't... Do you?",River,,Yes,,Core story lines
+10,course_1_hole_1_10,1,1,I guess I don't know her either,River,,Yes,,Core story lines
+11,course_1_hole_1_11,1,1,Let's meet her together!,Phoenix,,Yes,,Core story lines
+12,course_1_hole_1_12,1,1,Yeah!,River,,Yes - end,,Core story lines
+13,course_1_hole_1_13,1,1,"Hook, line, and sinker!",Winner,Someone wins hole 1,Yes - start,,
+14,course_1_hole_1_14,1,1,"More like hook, line, and STINKER!",Loser,,Yes - end,,
+15,course_1_hole_2_15,1,2,Aww heck,Loser,Someone wins hole 2,Yes - start,,
+16,course_1_hole_2_16,1,2,It's okay! You're almost done,Winner,,Yes,,
+17,course_1_hole_2_17,1,2,"Ugh, whatever",Loser,,Yes - end,,
+18,course_1_hole_2_18,1,2,"The crowd screams, G.O.A.T.!",Phoenix,Phoenix wins overall,Yes - start,,
+19,course_1_hole_2_19,1,2,"Come on, let's play again already!",River,,Yes - end,,
+20,course_1_hole_2_20,1,2,Another event goes down in history!,Phoenix,High score recorded,No,Player Name Input,
+21,course_1_hole_2_21,1,2,Darn! ... Hey!,Phoenix,River wins overall,Yes - start,,
+22,course_1_hole_2_22,1,2,What?,River,,Yes,,
+23,course_1_hole_2_23,1,2,You should try real golf! I bet you'd be good at it!,Phoenix,,Yes - end,,
+24,course_1_hole_2_24,1,2,I don't know...,River,,Yes - start,Player Name Input,
+25,course_1_hole_2_25,1,2,"Whatever, let's play again!",River,High score recorded,Yes - end,,
+,,,,[FADE TO BLACK],,,,,
