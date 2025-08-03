@@ -25,19 +25,16 @@ public class GameManager : MonoBehaviour
     
     private void Start()
     {
-        StartCoroutine(StartIntroScene());
-    }
-
-    private void OnEnable()
-    {
         // Subscribe to events
         MinigolfGameManager.Instance.OnCourseBegin.AddListener(OnCourseBegin);
         MinigolfGameManager.Instance.OnHoleBegin.AddListener(OnHoleBegin);
         MinigolfGameManager.Instance.OnCourseComplete.AddListener(OnCourseComplete);
         MinigolfGameManager.Instance.OnHoleComplete.AddListener(OnHoleComplete);
+        
+        StartCoroutine(StartIntroScene());
     }
-    
-    private void OnDisable()
+
+    private void OnDestroy()
     {
         // Unsubscribe from events
         MinigolfGameManager.Instance.OnCourseBegin.RemoveListener(OnCourseBegin);
@@ -54,6 +51,9 @@ public class GameManager : MonoBehaviour
         yield return DialogueManager.Instance.ShowDialogue("course_0_hole_0_1");
         yield return DialogueManager.Instance.ShowDialogue("course_0_hole_0_2");
         yield return DialogueManager.Instance.ShowDialogue("course_0_hole_0_3");
+        
+        MinigolfGameManager.Instance.StartCourse();
+        
         yield return null;
     }
     #endregion
@@ -67,10 +67,10 @@ public class GameManager : MonoBehaviour
     
     IEnumerator OnCourseBeginCoroutine(MinigolfGameData gameData)
     {
-        // Example of how to trigger parts of the story
+        Debug.Log($"[GameManager ({Time.frameCount})] OnCourseBeginCoroutine - Course: {gameData.course}");
         if (gameData.course == 0 && gameData.hole == 0)
         {
-
+            
         }
         yield return null;
     }
@@ -83,7 +83,7 @@ public class GameManager : MonoBehaviour
     
     IEnumerator OnHoleBeginCoroutine(MinigolfGameData gameData)
     {
-
+        Debug.Log($"[GameManager ({Time.frameCount})] OnHoleBeginCoroutine - Hole: {gameData.hole}");
         yield return null;
     }
     
@@ -93,9 +93,8 @@ public class GameManager : MonoBehaviour
     }
     IEnumerator OnCourseCompleteCoroutine(MinigolfGameData gameData)
     {
+        Debug.Log($"[GameManager ({Time.frameCount})] OnCourseCompleteCoroutine - Course: {gameData.course}");
         UpdateScore(gameData);
-
-        StartCoroutine(CoOnCourseComplete(gameData));
         
         // Example of how to trigger parts of the story
         if (gameData.course == 0 && gameData.hole == 0)
@@ -105,20 +104,6 @@ public class GameManager : MonoBehaviour
 
         yield return null;
     }
-    
-    public IEnumerator CoOnCourseComplete(MinigolfGameData gameData)
-    {
-        // At the end of courses 1 or 2, prompt user highscore
-        if (gameData.course == 0 || gameData.course == 1)
-        {
-            GameplayUI.Instance.Initialize();
-
-            while (GameplayUI.Instance.highscoreNameSaved == false)
-            {
-                yield return null;
-            }
-        }
-    }
 
     void OnHoleComplete(MinigolfGameData gameData)
     {
@@ -126,6 +111,7 @@ public class GameManager : MonoBehaviour
     }
     IEnumerator OnHoleCompleteCoroutine(MinigolfGameData gameData)
     {
+        Debug.Log($"[GameManager ({Time.frameCount})] OnHoleCompleteCoroutine - Hole: {gameData.hole}");
         yield return null;
 
     }

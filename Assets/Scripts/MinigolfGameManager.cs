@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Events;
@@ -64,18 +65,12 @@ public class MinigolfGameManager : MonoBehaviour
         gameData.player2Score = 0;
     }
 
-    private void OnEnable()
+    public void StartCourse()
     {
-        // Subscribe to events
-        
+        StartCoroutine(StartCourseCoroutine());
     }
-
-    private void OnDisable()
-    {
-        // Unsubscribe from events
-    }
-
-    public async Task StartCourse()
+    
+    IEnumerator StartCourseCoroutine()
     {
         Debug.Log($"Starting course: {gameData.course}");
 
@@ -99,12 +94,17 @@ public class MinigolfGameManager : MonoBehaviour
         
         OnCourseBegin.Invoke(gameData);
 
-        await Task.Yield(); // Wait 1 frame for the course to be instantiated
+        yield return null;
         
         StartHole();
     }
 
-    public async Task StartHole()
+    public void StartHole()
+    {
+        StartCoroutine(StartHoleCoroutine());
+    }
+    
+    IEnumerator StartHoleCoroutine()
     {
         switch (gameData.course)
         {
@@ -115,29 +115,35 @@ public class MinigolfGameManager : MonoBehaviour
         }
         
         OnHoleBegin.Invoke(gameData);
+        yield return null;
     }
 
-    public async Task EndCourse()
+    public void EndCourse()
+    {
+        StartCoroutine(EndCourseCoroutine());
+    }
+
+    IEnumerator EndCourseCoroutine()
     {
         Destroy(course);
         OnCourseComplete.Invoke(gameData);
-        
-        await Task.Yield(); // Wait 1 frame to resolve OnCourseComplete events
+
+        yield return null; // Wait 1 frame to resolve OnCourseComplete events
         
         // Move to next
         gameData.course++;
     }
 
-    public async Task EndHole()
+    IEnumerator EndHole()
     {
         OnHoleComplete.Invoke(gameData);
 
-        await Task.Yield(); // Wait 1 frame to resolve OnHoleComplete events
+        yield return null; // Wait 1 frame to resolve OnHoleComplete events
         
         if (gameData.hole >= 2) // At last hole
         {
             EndCourse();
-            return;
+            yield break;
         }
 
         if (gameData.currentPlayer == PlayerEnum.Phoenix)
@@ -153,6 +159,7 @@ public class MinigolfGameManager : MonoBehaviour
         }
         
         OnChangeTurn.Invoke(gameData);
+        yield return null;
     }
     
     

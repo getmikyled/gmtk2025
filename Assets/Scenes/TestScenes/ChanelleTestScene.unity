@@ -184,8 +184,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 435f8fb7d9d14a5ca5bc8f9658f39d1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  course1Prefab: {fileID: 0}
-  course2Prefab: {fileID: 0}
+  course1Prefab: {fileID: 8925371896372178999, guid: 471827742babe474e8986d3ff9793b97, type: 3}
+  course2Prefab: {fileID: 8925371896372178999, guid: 471827742babe474e8986d3ff9793b97, type: 3}
   gameData:
     currentPlayer: 0
     course: 0
@@ -639,7 +639,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1784165758
 Transform:
   m_ObjectHideFlags: 0
