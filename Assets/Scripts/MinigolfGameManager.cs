@@ -40,9 +40,14 @@ public class MinigolfGameManager : MonoBehaviour
     
     private void Awake()
     {
-        if (Instance != null)
+        if (Instance != null && Instance != this)
         {
-            Debug.Log("Instance of MinigolfGameManager already exists. Destroying this object.");
+            Destroy(gameObject); // Destroy duplicate instance
+        }
+        else
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject); // Optional: Persist across scene loads
         }
     }
     
