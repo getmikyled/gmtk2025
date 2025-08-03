@@ -55,12 +55,12 @@ namespace DefaultNamespace
         
         
 
-        private void HandleBeginReplay(MovementData movementData)
+        private void HandleBeginReplay(BallMovementData ballMovementData)
         {
             ball1.GetComponent<Renderer>().material.color = Color.green; // TODO temporary for debugging
         }
         
-        private void HandlePlayNextMovement(MovementData movementData)
+        private void HandlePlayNextMovement(BallMovementData ballMovementData)
         {
             Debug.Log("Play Next Movement!");
         }

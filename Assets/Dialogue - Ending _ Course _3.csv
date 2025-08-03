@@ -1,0 +1,28 @@
+#,Id,Course,Hole,Dialogue String,Character,Trigger,Sequence?,Choice,Notes
+0,course_3_hole_0_0,3,0,[Time to dust this off...],Course 2 Loser,Level start,,,
+1,course_3_hole_0_1,3,0,[It's just me today],Course 2 Loser,Multiplayer select,,,
+2,course_3_hole_0_2,3,0,...,Course 2 Loser,Singleplayer select,,,
+3,course_3_hole_0_3,3,0,,Course 2 Loser,Course Start,,,
+4,course_3_hole_1_4,3,1,"[Golf really was important to you, huh]",Course 2 Loser,Opponent ball fires for the first time,,,Dialogue will not trigger on replays
+5,course_3_hole_1_5,3,1,[You know after all this time...],Course 2 Loser,Player's ball fires,,,Dialogue will not trigger on replays
+6,course_3_hole_1_6,3,1,[I still don't like losing!],Course 2 Loser,,,,Dialogue will not trigger on replays
+7,course_3_hole_1_7,3,1,"[Of course you did, old friend.]",Course 2 Loser,"""Ghost"" Wins hole 1",,,Dialogue will not trigger on replays
+8,course_3_hole_1_8,3,1,[I wish I could see the look on your face!],Course 2 Loser,Player Wins hole 1,,,Dialogue will not trigger on replays
+9,course_3_hole_1_9,3,1,[Or you could see the look on mine...],Course 2 Loser,,,,Dialogue will not trigger on replays
+10,course_3_hole_2_10,3,2,[I bet you must've practiced every day after I left. Silly...],Phoenix,"""Ghost"" Wins hole 2",,,Dialogue will not trigger on replays
+11,course_3_hole_2_11,3,2,[You must've had a secret copy of this at your house or something...],River,"""Ghost"" Wins hole 2",,,Dialogue will not trigger on replays
+12,course_3_hole_2_12,3,2,[And you accused me of practicing overtime!],River,,,,Dialogue will not trigger on replays
+13,course_3_hole_2_13,3,2,[To be honest...],Course 2 Loser,Player Wins hole 2,,,Dialogue will not trigger on replays
+14,course_3_hole_2_14,3,2,"[I did secretly practice, all those years ago.]",Course 2 Loser,,,,Dialogue will not trigger on replays
+15,course_3_hole_2_15,3,2,[I bet you'd say something like],Course 2 Loser,"""Ghost"" wins overall",,,Dialogue will not trigger on replays
+16,course_3_hole_2_16,3,2,"[""Putt-er luck next time""]",Course 2 Loser,,,,Dialogue will not trigger on replays
+17,course_3_hole_2_17,3,2,[Well to that I say - shove it up your putt!],Course 2 Loser,,,,Dialogue will not trigger on replays
+18,course_3_hole_2_18,3,2,[Another round wouldn't hurt],Course 2 Loser,Retry selected,,,Dialogue will not trigger on replays
+19,course_3_hole_2_19,3,2,I miss you,Course 2 Loser,Player wins overall,,,
+20,course_3_hole_2_20,3,2,I guess I haven't met patience yet...,Course 2 Loser,,,,
+21,course_3_hole_2_21,3,2,[Do I really want to write over your score?],Course 2 Loser,Prompted to enter name,,,
+22,course_3_hole_2_22,3,2,[You're the best competition I've ever had],Course 2 Loser,Discard score,,,
+23,course_3_hole_2_23,3,2,"['til next time, old friend]",,,,,
+24,course_3_hole_2_24,3,2,"[I've thought about you on repeat, day after day...]",Course 2 Loser,Overwrite score,,,
+25,course_3_hole_2_25,3,2,[And it's time for me to be brave.],Course 2 Loser,,,,
+,,,,[ZOOM OUT TO GARAGE + END SCREEN],,,,,

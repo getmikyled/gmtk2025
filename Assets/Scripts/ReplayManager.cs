@@ -16,15 +16,15 @@ public class ReplayManager : MonoBehaviour
     public class RecordingData : ScriptableObject
     {
         public BallController ballRef;
-        public List<MovementData> movements;
+        public List<BallMovementData> movements;
     }
     
     public Dictionary<string, RecordingData> recordingData;
     public string replayName;
     public int replayIndex;
 
-    public UnityEvent<MovementData> onBeginReplay;
-    public UnityEvent<MovementData> onPlayNextMovement;
+    public UnityEvent<BallMovementData> onBeginReplay;
+    public UnityEvent<BallMovementData> onPlayNextMovement;
     public UnityEvent onEndReplay;
     
     
@@ -52,11 +52,11 @@ public class ReplayManager : MonoBehaviour
         {
             // Create a completely new recording
             recordingData.Add(id, ScriptableObject.CreateInstance<RecordingData>());
-            recordingData[id].movements = new List<MovementData>();
+            recordingData[id].movements = new List<BallMovementData>();
         }
         
         // Recording movement for existing hole
-        var currentMovement = ScriptableObject.CreateInstance<MovementData>();
+        var currentMovement = ScriptableObject.CreateInstance<BallMovementData>();
         currentMovement.positions = new List<Vector3>();
 
         recordingData[id].ballRef = ball;

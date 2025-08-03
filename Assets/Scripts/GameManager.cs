@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using UnityEngine;
 
-public enum PlayerEnum { Undetermined, Phoenix, River}
+public enum PlayerEnum { Undetermined, Phoenix, River, LosingPlayer, WinningPlayer, Course2Loser}
 
 
 public class GameManager : MonoBehaviour
@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     
     public static Dictionary<string, string> DialogueMap = new Dictionary<string, string>()
     {
-        { "phoenix-course-1-hole-0-start", "Let the game begin!" },
+        { "phoenix-course-0-hole-0-start", "Let the game begin!" },
         { "river-course-1-hole-0-start", "May the best player win!" },
         { "phoenix-course-1-hole-0-complete", "Phoenix for the win!" },
         { "river-course-1-hole-0-complete", "River takes the lead!" },
