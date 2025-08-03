@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 
@@ -67,11 +68,27 @@ public class GameManager : MonoBehaviour
     private void OnCourseComplete(MinigolfGameData gameData)
     {
         UpdateScore(gameData);
+
+        StartCoroutine(CoOnCourseComplete(gameData));
         
         // Example of how to trigger parts of the story
         if (gameData.course == 0 && gameData.hole == 0)
         {
             // DisplayManager.Set(Player.Phoenix, "Let the game begin"!
+        }
+    }
+    
+    public IEnumerator CoOnCourseComplete(MinigolfGameData gameData)
+    {
+        // At the end of courses 1 or 2, prompt user highscore
+        if (gameData.course == 0 || gameData.course == 1)
+        {
+            GameplayUI.Instance.Initialize();
+
+            while (GameplayUI.Instance.highscoreNameSaved == false)
+            {
+                yield return null;
+            }
         }
     }
 
@@ -106,6 +123,8 @@ public class GameManager : MonoBehaviour
                 break;
         }
     }
+    
+    
     
     #endregion
 }
