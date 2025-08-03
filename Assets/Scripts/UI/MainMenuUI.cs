@@ -39,8 +39,8 @@ public class MainMenuUI : MonoBehaviour
 
     private IEnumerator CoLerpIntroCameraSequence()
     {
-        yield return DialogueManager.Instance.ShowDialogue("course_0_hole_0_0");
-        yield return DialogueManager.Instance.ShowDialogue("course_0_hole_0_1");
+        // Play the dialogue and zoom camera at the same time.
+        StartCoroutine(PlayIntroDialogue());
         
         Camera mainCamera = Camera.main;
         mainCamera.transform.localPosition = cameraStartPosition;
@@ -57,5 +57,11 @@ public class MainMenuUI : MonoBehaviour
         
         mainCamera.transform.localPosition = cameraEndPosition;
         GameplayUI.Instance.SetGolfMainMenuUIActive(true);
+    }
+
+    private IEnumerator PlayIntroDialogue()
+    {
+        yield return DialogueManager.Instance.ShowDialogue("course_0_hole_0_0");
+        yield return DialogueManager.Instance.ShowDialogue("course_0_hole_0_1");
     }
 }

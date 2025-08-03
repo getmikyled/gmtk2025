@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Serialization;
+using Object = System.Object;
 
 [Serializable]
 public class MinigolfGameData
@@ -26,10 +27,6 @@ public class MinigolfGameManager : MonoBehaviour
     
     public static MinigolfGameManager Instance;
     public MinigolfGameData gameData;
-    
-    [SerializeField] private BallController player1Ball;
-    [SerializeField] private BallController player2Ball;
-    [SerializeField] private HoleTrigger hole;
     
     // Events
     public UnityEvent<MinigolfGameData> OnCourseBegin;
@@ -93,6 +90,16 @@ public class MinigolfGameManager : MonoBehaviour
                 break;
         }
 
+        // Courses get positioned at the local origin of the Object with Tag: Boundary.
+        // To make sure the course is positioned correctly, adjust the prefab's transform against the Boundary object.
+        GameObject boundaryObject = GameObject.FindWithTag("Boundary");
+        if (boundaryObject != null) {
+            Debug.LogWarning("Boundary object with the tag 'Boundary' not found.");
+        }
+        
+        course.transform.SetParent(boundaryObject.transform);
+        
+        
         // Subscribe to the balls' events
         course.currentHole.ball.OnBallMoved.AddListener(HandleOnBallMoved);
         course.currentHole.hole.OnHoleCompleted.AddListener(HandleOnHoleCompleted);
@@ -121,14 +128,13 @@ public class MinigolfGameManager : MonoBehaviour
     
     IEnumerator StartHoleCoroutine()
     {
-        switch (gameData.course)
+        switch (gameData.currentPlayer)
         {
-            case 0:
+            case PlayerEnum.Phoenix:
                 break;
-            case 1:
-                break;
+            case PlayerEnum.River:
+                break; 
         }
-        
         course.ActivateHole(gameData.hole);
         
         OnHoleBegin.Invoke(gameData);
@@ -151,7 +157,12 @@ public class MinigolfGameManager : MonoBehaviour
         gameData.course++;
     }
 
-    IEnumerator EndHole()
+    public void EndHole()
+    {
+        StartCoroutine(EndHoleCoroutine());
+    }
+
+    IEnumerator EndHoleCoroutine()
     {
         OnHoleComplete.Invoke(gameData);
 
@@ -176,7 +187,18 @@ public class MinigolfGameManager : MonoBehaviour
         }
         
         OnChangeTurn.Invoke(gameData);
+        
+        // Start hole again for next player
+        StartHole();
+        
         yield return null;
+    }
+
+    public void ResetHole()
+    {
+        // Place ball at restart
+        var ball = course.currentHole.ball;
+        ball.transform.position = ball.startingPosition;
     }
     
     

@@ -12,6 +12,7 @@ public class HoleTrigger : MonoBehaviour
     {
         if (other.CompareTag(ballTag))
         {
+            other.gameObject.SetActive(false);
             OnHoleCompleted.Invoke();
             Debug.Log("Hole completed!");
         }

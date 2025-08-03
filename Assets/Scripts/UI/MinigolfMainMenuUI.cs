@@ -28,6 +28,7 @@ public class MinigolfMainMenuUI : MonoBehaviour
 
     public void OnOnePlayerButtonClicked()
     {
+        Debug.Log("One player button clicked");
         if (MinigolfGameManager.Instance.gameData.course == 0)
         {
             StartCoroutine(DialogueManager.Instance.ShowDialogue("course_0_hole_0_2"));
@@ -46,6 +47,7 @@ public class MinigolfMainMenuUI : MonoBehaviour
 
     public void OnTwoPlayersButtonClicked()
     {
+        Debug.Log("Two players button clicked");
         if (MinigolfGameManager.Instance.gameData.course == 0)
         {
             // Begin course 1
