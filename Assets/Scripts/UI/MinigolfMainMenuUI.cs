@@ -37,7 +37,7 @@ public class MinigolfMainMenuUI : MonoBehaviour
         }
         else
         {
-            DialogueManager.Instance.ShowDialogue("course_0_hole_0_2");
+            StartCoroutine(DialogueManager.Instance.ShowDialogue("course_0_hole_0_2"));
         }
     }
 
@@ -46,10 +46,13 @@ public class MinigolfMainMenuUI : MonoBehaviour
         if (twoPlayerEnabled)
         {
             SceneManager.LoadScene("Game");
+            twoPlayerEnabled = false;
+            onePlayerEnabled = true;
+            gameObject.SetActive(false);
         }
         else
         {
-            DialogueManager.Instance.ShowDialogue("course_3_hole_0_1");
+            StartCoroutine(DialogueManager.Instance.ShowDialogue("course_3_hole_0_1"));
         }
     }
 }
