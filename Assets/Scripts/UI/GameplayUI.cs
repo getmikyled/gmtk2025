@@ -17,6 +17,7 @@ public class GameplayUI : MonoBehaviour
 
     [FormerlySerializedAs("highscoreSaved")] public bool highscoreNameSaved = false;
     
+    
     private void Awake()
     {
         if (Instance != null && Instance != this)
