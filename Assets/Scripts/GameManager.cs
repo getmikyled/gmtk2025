@@ -47,9 +47,6 @@ public class GameManager : MonoBehaviour
 
     IEnumerator StartIntroScene()
     {
-        yield return DialogueManager.Instance.ShowDialogue("course_0_hole_0_0");
-        yield return DialogueManager.Instance.ShowDialogue("course_0_hole_0_1");
-        yield return DialogueManager.Instance.ShowDialogue("course_0_hole_0_2");
         yield return DialogueManager.Instance.ShowDialogue("course_0_hole_0_3");
         
         MinigolfGameManager.Instance.StartCourse();

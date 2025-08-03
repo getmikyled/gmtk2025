@@ -517,7 +517,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1673746350611259673
 RectTransform:
   m_ObjectHideFlags: 0
@@ -527,8 +527,8 @@ RectTransform:
   m_GameObject: {fileID: 3868406237104051225}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 2.9, y: 2.9, z: 2.9}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 5083333670200238961}
   - {fileID: 3874549039771822702}
@@ -729,8 +729,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blackFadeImage: {fileID: 3509557544990937847}
   lerpFadeDuration: 1
-  highscoreNameInput: {fileID: 0}
   highscoreNameSaved: 0
+  highscoreNameInput: {fileID: 0}
+  golfMainMenuUI: {fileID: 1021131979784298434}
 --- !u!223 &2062969655888716596
 Canvas:
   m_ObjectHideFlags: 0
@@ -1104,7 +1105,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3809869396512866997
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1171,12 +1172,24 @@ PrefabInstance:
     m_TransformParent: {fileID: 2738886950898118415}
     m_Modifications:
     - target: {fileID: 2180657818551422708, guid: 0210fb0b9bbe9644c84a6f6c66045ee3, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.46
+      objectReference: {fileID: 0}
+    - target: {fileID: 2180657818551422708, guid: 0210fb0b9bbe9644c84a6f6c66045ee3, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.51
+      objectReference: {fileID: 0}
+    - target: {fileID: 2180657818551422708, guid: 0210fb0b9bbe9644c84a6f6c66045ee3, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.47
+      objectReference: {fileID: 0}
+    - target: {fileID: 2180657818551422708, guid: 0210fb0b9bbe9644c84a6f6c66045ee3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -6.35
       objectReference: {fileID: 0}
     - target: {fileID: 2180657818551422708, guid: 0210fb0b9bbe9644c84a6f6c66045ee3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -17.000015
+      value: 74.25
       objectReference: {fileID: 0}
     - target: {fileID: 2180657818551422708, guid: 0210fb0b9bbe9644c84a6f6c66045ee3, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1210,6 +1223,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3378661477079051495, guid: 0210fb0b9bbe9644c84a6f6c66045ee3, type: 3}
+      propertyPath: m_Color.b
+      value: 0.26122376
+      objectReference: {fileID: 0}
+    - target: {fileID: 3378661477079051495, guid: 0210fb0b9bbe9644c84a6f6c66045ee3, type: 3}
+      propertyPath: m_Color.g
+      value: 0.654088
+      objectReference: {fileID: 0}
+    - target: {fileID: 3378661477079051495, guid: 0210fb0b9bbe9644c84a6f6c66045ee3, type: 3}
+      propertyPath: m_Color.r
+      value: 0.30050993
+      objectReference: {fileID: 0}
     - target: {fileID: 3825524813751808600, guid: 0210fb0b9bbe9644c84a6f6c66045ee3, type: 3}
       propertyPath: m_Name
       value: Golf_Title
@@ -1219,6 +1244,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0210fb0b9bbe9644c84a6f6c66045ee3, type: 3}
+--- !u!1 &1021131979784298434 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3825524813751808600, guid: 0210fb0b9bbe9644c84a6f6c66045ee3, type: 3}
+  m_PrefabInstance: {fileID: 4268625937988054426}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2701724472152712046 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2180657818551422708, guid: 0210fb0b9bbe9644c84a6f6c66045ee3, type: 3}

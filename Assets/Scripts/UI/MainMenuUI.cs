@@ -39,6 +39,9 @@ public class MainMenuUI : MonoBehaviour
 
     private IEnumerator CoLerpIntroCameraSequence()
     {
+        yield return DialogueManager.Instance.ShowDialogue("course_0_hole_0_0");
+        yield return DialogueManager.Instance.ShowDialogue("course_0_hole_0_1");
+        
         Camera mainCamera = Camera.main;
         mainCamera.transform.localPosition = cameraStartPosition;
         
