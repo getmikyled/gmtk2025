@@ -19,7 +19,7 @@ namespace DefaultNamespace
             replayManager.onEndReplay.AddListener(HandleEndReplay);
             
             // ball1.OnBallMove += HandleOnBallMove;
-            ball1.OnBallMove.AddListener(HandleOnBallMoveBegin);
+            ball1.OnBallMoved.AddListener(HandleOnBallMoveBegin);
         }
 
         private int courseIndex = 0;
@@ -55,12 +55,12 @@ namespace DefaultNamespace
         
         
 
-        private void HandleBeginReplay(MovementData movementData)
+        private void HandleBeginReplay(BallMovementData ballMovementData)
         {
             ball1.GetComponent<Renderer>().material.color = Color.green; // TODO temporary for debugging
         }
         
-        private void HandlePlayNextMovement(MovementData movementData)
+        private void HandlePlayNextMovement(BallMovementData ballMovementData)
         {
             Debug.Log("Play Next Movement!");
         }

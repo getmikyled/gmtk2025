@@ -4,7 +4,7 @@ using System.Net;
 using UnityEngine;
 
 [Serializable]
-public class MovementData : ScriptableObject
+public class BallMovementData : ScriptableObject
 {
     public List<Vector3> positions;
 }
