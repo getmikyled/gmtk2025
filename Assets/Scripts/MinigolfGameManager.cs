@@ -22,7 +22,7 @@ public class MinigolfGameManager : MonoBehaviour
     public GameObject course1Prefab;  // Reference to the prefab of mingolf course
     public GameObject course2Prefab;
 
-    private GameObject course;  // Instantiated gameobject for minigolf course
+    private Course course;  // Instantiated gameobject for minigolf course
     
     public static MinigolfGameManager Instance;
     public MinigolfGameData gameData;
@@ -77,26 +77,41 @@ public class MinigolfGameManager : MonoBehaviour
         gameData.hole = 0; // Set to 1st hole
         gameData.currentPlayer = PlayerEnum.Phoenix;
         
+        UnloadCourse();
+        
         switch (gameData.course)
         {
             case 0:
-                course = Instantiate(course1Prefab);
+                course = Instantiate(course1Prefab).GetComponent<Course>();
                 break;
             case 1:
-                Destroy(course);
-                course = Instantiate(course2Prefab);
+                
+                course = Instantiate(course2Prefab).GetComponent<Course>();
                 break;
             case 2:
-                Destroy(course);
-                course = Instantiate(course2Prefab);
+                course = Instantiate(course2Prefab).GetComponent<Course>();
                 break;
         }
+
+        // Subscribe to the balls' events
+        course.currentHole.ball.OnBallMoved.AddListener(HandleOnBallMoved);
+        course.currentHole.hole.OnHoleCompleted.AddListener(HandleOnHoleCompleted);
         
         OnCourseBegin.Invoke(gameData);
 
         yield return null;
         
         StartHole();
+    }
+
+    public void UnloadCourse()
+    {
+        if (course == null) return; // If there is no course to unload, return (no need to unload)
+        
+        course.currentHole.ball.OnBallMoved.RemoveListener(HandleOnBallMoved);
+        course.currentHole.hole.OnHoleCompleted.RemoveListener(HandleOnHoleCompleted);
+        
+        Destroy(course);
     }
 
     public void StartHole()
@@ -113,6 +128,8 @@ public class MinigolfGameManager : MonoBehaviour
             case 1:
                 break;
         }
+        
+        course.ActivateHole(gameData.hole);
         
         OnHoleBegin.Invoke(gameData);
         yield return null;
@@ -171,12 +188,12 @@ public class MinigolfGameManager : MonoBehaviour
     }
 
     #region Minigolf Game Events
-    public void OnBallEnteredHole(/* BallController ballRef,  */)
+    public void HandleOnHoleCompleted(/* BallController ballRef,  */)
     {
         EndHole();
     }
 
-    public void OnBallHit()
+    public void HandleOnBallMoved(BallController ballRef)
     {
         if (gameData.currentPlayer == PlayerEnum.Phoenix)
         {

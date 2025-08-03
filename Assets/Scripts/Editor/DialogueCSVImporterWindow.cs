@@ -89,7 +89,7 @@ if (data.Length < 3)
                     item.sequenceType = SequenceType.No;
                     break;
                 default:
-                    Debug.LogError($"Unknown sequence: {data[3]}");
+                    item.sequenceType = SequenceType.No;
                     break;
             }
 

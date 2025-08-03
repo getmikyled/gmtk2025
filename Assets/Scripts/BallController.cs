@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 
 // Every Unity script that interacts with the engine must inherit from MonoBehaviour
 public class BallController : MonoBehaviour
@@ -13,7 +14,7 @@ public class BallController : MonoBehaviour
     private bool isMoving = false; // Flag for if the ball is moving
     public float power = 10f; // Multiplier for power
 
-    public UnityEvent<BallController> OnBallMove; // Event for when the ball moves
+    [FormerlySerializedAs("OnBallMove")] public UnityEvent<BallController> OnBallMoved; // Event for when the ball moves
     
     void Start() // Called once at the start of the game (required for all MonoBehavior scripts)
     {
@@ -57,7 +58,7 @@ public class BallController : MonoBehaviour
             rb.AddForce(force, ForceMode.Impulse);
             
             // Invoke ball move event so listeners have access to the data
-            OnBallMove?.Invoke(this);
+            OnBallMoved?.Invoke(this);
             Debug.Log($"[BallController ({Time.frameCount})] Moving ball");
 
             isDragging = false;
