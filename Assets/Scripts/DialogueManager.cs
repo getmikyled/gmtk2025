@@ -24,6 +24,7 @@ public class DialogueManager : MonoBehaviour
         if (Instance != null)
         {
             Debug.Log("Instance of ReplayManager already exists. Destroying this  object.");
+            Destroy(this);
             return;
         }
         
@@ -44,13 +45,8 @@ public class DialogueManager : MonoBehaviour
             dialogueData.Add(item);
         }
     }
-    
-    public Coroutine ShowDialogue(string id, float duration = 3f)
-    {
-        return StartCoroutine(ShowDialogueCoroutine(id, duration));
-    }
 
-    private IEnumerator ShowDialogueCoroutine(string id, float duration)
+    public IEnumerator ShowDialogue(string id, float duration = 3f)
     {
         // Wait until previous dialogue finishes
         while (isDialogueActive)
