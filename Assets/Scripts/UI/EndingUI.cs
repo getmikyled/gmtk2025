@@ -11,7 +11,7 @@ public class EndingUI : MonoBehaviour
     void Awake()
     {
         // Subscribe buttons
-        overwriteButton.onClick.AddListener(GameplayUI.instance.FadeIn);
-        discardButton.onClick.AddListener(GameplayUI.instance.FadeIn);
+        overwriteButton.onClick.AddListener(GameplayUI.Instance.FadeIn);
+        discardButton.onClick.AddListener(GameplayUI.Instance.FadeIn);
     }
 }

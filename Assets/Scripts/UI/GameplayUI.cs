@@ -1,12 +1,40 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class GameplayUI : MonoBehaviour
 {
+    public static GameplayUI Instance;
+    
     [SerializeField] private Image blackFadeImage;
     [SerializeField] private float lerpFadeDuration = 1.0f;
 
+    [Space] 
+    [SerializeField] private TextMeshProUGUI highscoreNameInput;
+
+    [FormerlySerializedAs("highscoreSaved")] public bool highscoreNameSaved = false;
+    
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject); // Destroy duplicate instance
+        }
+        else
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject); // Optional: Persist across scene loads
+        }
+    }
+
+    public void Initialize()
+    {
+        highscoreNameSaved = false;
+    }
+    
     /// <summary>
     /// Fade the screen to black
     /// </summary>
@@ -46,5 +74,10 @@ public class GameplayUI : MonoBehaviour
             yield return null;
         }
         blackFadeImage.color = resultColor;
+    }
+
+    public void OnSaveHighscoreButtonClicked()
+    {
+        highscoreNameSaved = true;
     }
 }
