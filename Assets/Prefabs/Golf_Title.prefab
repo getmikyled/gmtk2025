@@ -234,6 +234,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2180657818551422708}
+  - component: {fileID: 9062743754884532605}
   m_Layer: 0
   m_Name: Golf_Title
   m_TagString: Untagged
@@ -262,6 +263,18 @@ Transform:
   - {fileID: 1655930416506557144}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9062743754884532605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3825524813751808600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ec4aa72bc11f544f90b1864bb78eeb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4868115931478915594
 GameObject:
   m_ObjectHideFlags: 0
