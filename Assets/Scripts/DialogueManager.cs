@@ -21,14 +21,15 @@ public class DialogueManager : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance != null)
+        if (Instance != null && Instance != this)
         {
-            Debug.Log("Instance of ReplayManager already exists. Destroying this  object.");
-            Destroy(this);
-            return;
+            Destroy(gameObject); // Destroy duplicate instance
         }
-        
-        Instance = this;
+        else
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject); // Optional: Persist across scene loads
+        }
 
         // Load dialogue in the dictionary so they can be played
         LoadDialogue(dialoguePath1);

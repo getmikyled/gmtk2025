@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -41,7 +42,7 @@ public class MinigolfMainMenuUI : MonoBehaviour
         {
             // Beign course 3
             gameObject.SetActive(false);
-            StartCoroutine(GameManager.Instance.StartIntroScene());
+            StartCoroutine(GameManager.Instance.StartIntroSceneCoroutine());
         }
     }
 
@@ -51,19 +52,36 @@ public class MinigolfMainMenuUI : MonoBehaviour
         if (MinigolfGameManager.Instance.gameData.course == 0)
         {
             // Begin course 1
-            SceneManager.LoadScene("Game");
-            StartCoroutine(GameManager.Instance.StartIntroScene());
-            gameObject.SetActive(false);
+            StartCoroutine(DelayStartIntroScene());
         }
         else if (MinigolfGameManager.Instance.gameData.course == 1)
         {
             // Beign course 2
+            GameManager.Instance.StartIntroScene();
             gameObject.SetActive(false);
-            StartCoroutine(GameManager.Instance.StartIntroScene());
         }
         else if (MinigolfGameManager.Instance.gameData.course == 2)
         {
             StartCoroutine(DialogueManager.Instance.ShowDialogue("course_3_hole_0_1"));
         }
+    }
+    
+    private IEnumerator DelayStartIntroScene()
+    {
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("Game");
+
+        // Wait until scene is fully loaded
+        while (!asyncLoad.isDone)        {
+            Debug.Log("Waiting to load Game scene...");
+            yield return null;
+        }
+        
+        // Now the scene is fully loaded, you can start the intro
+        Debug.Log("Game scene loaded");
+        yield return null; // wait a frame for GameManager to load
+        GameManager.Instance.StartIntroScene();
+        
+        gameObject.SetActive(false);
+        yield return null;
     }
 }

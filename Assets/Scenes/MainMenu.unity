@@ -625,6 +625,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2550518485255488590, guid: 45111e46ec9f991438f3f81f45ef3346, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 62e04de7f37f0f9469673912df19627d, type: 2}
     - target: {fileID: 2697554662584368012, guid: 45111e46ec9f991438f3f81f45ef3346, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -915,17 +919,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3690797381704444203, guid: bec0a45afde704449b11c3b7fbcf0f7b, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7747209282184569959, guid: bec0a45afde704449b11c3b7fbcf0f7b, type: 3}
       propertyPath: m_Name
       value: GameplayUI
-      objectReference: {fileID: 0}
-    - target: {fileID: 7747209282184569959, guid: bec0a45afde704449b11c3b7fbcf0f7b, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -942,6 +938,6 @@ SceneRoots:
   - {fileID: 5078889972798637825}
   - {fileID: 1302208511}
   - {fileID: 5281557770403111936}
-  - {fileID: 9464138}
   - {fileID: 869889783}
+  - {fileID: 9464138}
   - {fileID: 273956652}

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Threading.Tasks;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Serialization;
@@ -23,6 +24,7 @@ public class MinigolfGameManager : MonoBehaviour
     public GameObject course1Prefab;  // Reference to the prefab of mingolf course
     public GameObject course2Prefab;
 
+    private CourseManager courseManager;
     private Course course;  // Instantiated gameobject for minigolf course
     
     public static MinigolfGameManager Instance;
@@ -64,6 +66,11 @@ public class MinigolfGameManager : MonoBehaviour
 
     public void StartCourse()
     {
+        if (courseManager == null)
+        {
+            courseManager = GameObject.FindGameObjectWithTag("Courses").GetComponent<CourseManager>();
+        }
+
         StartCoroutine(StartCourseCoroutine());
     }
     
@@ -79,26 +86,23 @@ public class MinigolfGameManager : MonoBehaviour
         switch (gameData.course)
         {
             case 0:
-                course = Instantiate(course1Prefab).GetComponent<Course>();
+                course = courseManager.course1;
                 break;
             case 1:
                 
-                course = Instantiate(course2Prefab).GetComponent<Course>();
+                course = courseManager.course2;
                 break;
             case 2:
-                course = Instantiate(course2Prefab).GetComponent<Course>();
+                course = courseManager.course2;
                 break;
         }
-
-        // Courses get positioned at the local origin of the Object with Tag: Boundary.
-        // To make sure the course is positioned correctly, adjust the prefab's transform against the Boundary object.
-        GameObject boundaryObject = GameObject.FindWithTag("Boundary");
-        if (boundaryObject != null) {
-            Debug.LogWarning("Boundary object with the tag 'Boundary' not found.");
+        if (course == null)
+        {
+            Debug.LogError("Course1 not found.");
         }
         
-        course.transform.SetParent(boundaryObject.transform);
-        
+        course.GameObject().SetActive(true);
+        course.ActivateHole(0); // Activate the first hole
         
         // Subscribe to the balls' events
         course.currentHole.ball.OnBallMoved.AddListener(HandleOnBallMoved);
@@ -118,7 +122,7 @@ public class MinigolfGameManager : MonoBehaviour
         course.currentHole.ball.OnBallMoved.RemoveListener(HandleOnBallMoved);
         course.currentHole.hole.OnHoleCompleted.RemoveListener(HandleOnHoleCompleted);
         
-        Destroy(course);
+        course.gameObject.SetActive(false);
     }
 
     public void StartHole()
@@ -165,11 +169,13 @@ public class MinigolfGameManager : MonoBehaviour
     IEnumerator EndHoleCoroutine()
     {
         OnHoleComplete.Invoke(gameData);
+        Debug.Log("OnHoleComplete event invoked.");
 
         yield return null; // Wait 1 frame to resolve OnHoleComplete events
         
         if (gameData.hole >= 2) // At last hole
         {
+            Debug.Log("Last hole reached, ending course.");
             EndCourse();
             yield break;
         }
@@ -177,19 +183,23 @@ public class MinigolfGameManager : MonoBehaviour
         if (gameData.currentPlayer == PlayerEnum.Phoenix)
         {
             // When 1st player finishes, repeat hole with 2nd player
+            Debug.Log("Current player is Phoenix, switching to River.");
             gameData.currentPlayer = PlayerEnum.River;
         }
         else
         {
             // Otherwise, advance to next hole and begin player 1
+            Debug.Log("Current player is River, advancing to the next hole and switching to Phoenix.");
             gameData.currentPlayer = PlayerEnum.Phoenix;
             gameData.hole++;
         }
         
         OnChangeTurn.Invoke(gameData);
+        Debug.Log("OnChangeTurn event invoked.");
         
         // Start hole again for next player
         StartHole();
+        Debug.Log("StartHole method called for the next player.");
         
         yield return null;
     }

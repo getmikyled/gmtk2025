@@ -11,7 +11,7 @@ public class Course : MonoBehaviour
 
     private void Start()
     {
-        ActivateHole(0);
+        currentHole = holeLevel1;
     }
         
     public void ActivateHole(int holeIndex)

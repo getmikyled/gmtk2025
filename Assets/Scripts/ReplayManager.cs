@@ -30,13 +30,16 @@ public class ReplayManager : MonoBehaviour
     
     public void Awake()
     {
-        if (Instance != null)
+        if (Instance != null && Instance != this)
         {
-            Debug.Log("Instance of ReplayManager already exists. Destroying this  object.");
-            return;
+            Destroy(gameObject); // Destroy duplicate instance
+        }
+        else
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject); // Optional: Persist across scene loads
         }
         
-        Instance = this;
         recordingData = new Dictionary<string, RecordingData>();  
     } 
     

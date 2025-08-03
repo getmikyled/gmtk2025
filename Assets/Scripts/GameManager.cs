@@ -44,8 +44,14 @@ public class GameManager : MonoBehaviour
     
     #region Intro Events
 
-    public IEnumerator StartIntroScene()
+    public void StartIntroScene()
     {
+        StartCoroutine(StartIntroSceneCoroutine());
+    }
+    
+    public IEnumerator StartIntroSceneCoroutine()
+    {
+        Debug.Log("[GameManager] Starting intro scene");
         MinigolfGameManager.Instance.StartCourse();
         
         yield return null;

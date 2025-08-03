@@ -2090,7 +2090,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8589309840740580759
 Transform:
   m_ObjectHideFlags: 0
@@ -2099,10 +2099,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7450958129903968034}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: -0, y: 0.70710576, z: -0, w: 0.7071079}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.42, y: 0.42, z: 0.42}
-  m_ConstrainProportionsScale: 1
+  m_LocalScale: {x: 0.09, y: 0.064, z: 0.064}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7577089886646867268}
   - {fileID: 8121607350679532325}
@@ -2113,7 +2113,7 @@ Transform:
   - {fileID: 2938832251483550615}
   - {fileID: 9127214359432542557}
   m_Father: {fileID: 8437329857598737551}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!114 &7579333851184575426
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2360,7 +2360,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8915632663969814952
 Transform:
   m_ObjectHideFlags: 0
@@ -2369,10 +2369,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8295563918605997871}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -9.6, y: 0, z: -0}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
-  m_ConstrainProportionsScale: 1
+  m_LocalRotation: {x: -0, y: -0.70710576, z: -0, w: 0.7071078}
+  m_LocalPosition: {x: -1, y: 0, z: -2.9}
+  m_LocalScale: {x: 0.07, y: 0.07, z: 0.05}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5383820823437589348}
   - {fileID: 1381404415679564896}
@@ -2390,7 +2390,7 @@ Transform:
   - {fileID: 3149626924501711740}
   - {fileID: 4989488914577760808}
   m_Father: {fileID: 8437329857598737551}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!114 &5278243362390447040
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2648,8 +2648,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.24006249, y: 0.44185224, z: 0.12904966}
-  m_ConstrainProportionsScale: 1
+  m_LocalScale: {x: 8.101382, y: 2.2632, z: 5.091014}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8589309840740580759}
   - {fileID: 8915632663969814952}

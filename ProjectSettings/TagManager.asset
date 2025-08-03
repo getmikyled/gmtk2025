@@ -6,6 +6,7 @@ TagManager:
   tags:
   - GolfBall
   - Boundary
+  - Courses
   layers:
   - Default
   - TransparentFX
